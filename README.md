@@ -38,6 +38,14 @@
 
 Esse projeto foi desenvolvido durante o Bootcamp da Rocketseat. Trata-se de um projeto fullstack para uma barbearia ficticia, a GoBarber, o projeto consiste na parte frontend(React), mobile(React Native) e backend(NodeJs).
 
+## 🎨 Layout
+
+<p align="center">
+    <img alt="GoBarber" title="#GoBarber" src=".github/capa.png" width="720px" />
+</p>
+
+Você pode utilizar a seguinte URL para visualizar todas as telas: [Visualizar](https://www.figma.com/file/BXCihtXXh9p37lGsENV614/GoBarber?node-id=34%3A1180)
+
 ## :rocket: Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
