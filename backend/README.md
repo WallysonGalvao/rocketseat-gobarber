@@ -71,6 +71,4 @@ $ yarn test
 
 Você pode executar online ou fazer o download dos endpoints e executar diretamente no Insomnia:
 
-[![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=FasfFeet&uri=https%3A%2F%2Fraw.githubusercontent.com%2FWallysonGalvao%2Frocketseat-desafio-fastfeet%2Fmaster%2Fbackend%2Frequests.json)
-
----
+## [![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=&uri=https%3A%2F%2Fraw.githubusercontent.com%2FWallysonGalvao%2Frocketseat-gobarber%2Fmaster%2Fbackend%2Fendpoints.json)
