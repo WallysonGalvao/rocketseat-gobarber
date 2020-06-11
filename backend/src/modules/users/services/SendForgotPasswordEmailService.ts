@@ -3,7 +3,7 @@ import { injectable, inject } from 'tsyringe';
 import IMailProvider from '@shared/container/providers/MailProvider/models/IMailProvider';
 import AppError from '@shared/errors/AppError';
 import IUsersRepository from '../repositories/IUsersRepository';
-import IUserTokenRepository from '../repositories/IUserTokenRepository';
+import IUserTokensRepository from '../repositories/IUserTokensRepository';
 
 interface IRequest {
   email: string;
@@ -19,7 +19,7 @@ class SendForgotPasswordEmailService {
     private mailProvider: IMailProvider,
 
     @inject('UserTokenRepository')
-    private userTokenRepository: IUserTokenRepository,
+    private userTokenRepository: IUserTokensRepository,
   ) {}
 
   public async execute({ email }: IRequest): Promise<void> {
@@ -27,12 +27,22 @@ class SendForgotPasswordEmailService {
 
     if (!user) throw new AppError('User does not exists.');
 
-    await this.userTokenRepository.generate(user.id);
+    const { token } = await this.userTokenRepository.generate(user.id);
 
-    await this.mailProvider.sendMail(
-      email,
-      'Pedido de recuperação de senha recebido',
-    );
+    await this.mailProvider.sendMail({
+      to: {
+        name: user.name,
+        email: user.email,
+      },
+      subject: '[GoBarber] Recuperação de senha',
+      templateData: {
+        template: 'Olá, {{name}}: {{token}}',
+        variables: {
+          name: user.name,
+          token,
+        },
+      },
+    });
   }
 }
 
