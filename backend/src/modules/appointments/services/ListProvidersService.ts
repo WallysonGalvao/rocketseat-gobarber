@@ -19,9 +19,9 @@ class ListProvidersService {
   ) {}
 
   public async execute({ user_id }: IRequest): Promise<User[]> {
-    let users = await this.cacheProvider.recover<User[]>(
-      `providers-list:${user_id}`,
-    );
+    const cacheKey = `providers-list:${user_id}`;
+
+    let users = await this.cacheProvider.recover<User[]>(cacheKey);
 
     if (!users) {
       users = await this.usersRepository.findAllProviders({
@@ -29,7 +29,7 @@ class ListProvidersService {
       });
     }
 
-    await this.cacheProvider.save(`providers-list:${user_id}`, users);
+    await this.cacheProvider.save(cacheKey, users);
 
     return users;
   }
